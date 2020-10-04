@@ -76,11 +76,11 @@ function getRandomInt(max) {
 }
 
 function getGenN() {
-    chosenCol = cellXCoor.value;
-    chosenRow = cellYCoor.value;
+    chosenCol = +(cellXCoor.value.trim());
+    chosenRow = +(cellYCoor.value.trim());
     index = (chosenRow - 1) * cols + (chosenCol - 1);
 
-    iterations = iterationN.value;
+    iterations = +(iterationN.value.trim());
     
     checkEnteredInfo(chosenCol, chosenRow, iterations, index);
 
