@@ -8,7 +8,7 @@ const gameGrid = document.getElementById('game-grid');
 const cellXCoor = document.getElementById('cell-x-input');
 const cellYCoor = document.getElementById('cell-y-input');
 const iterationN = document.getElementById('iteration-input');
-const iterationSubmit = document.getElementById('iteration-submit');
+const goBtn = document.getElementById('iteration-submit');
 const restartGameBtn = document.getElementById('restart-game');
 const chosenCell = document.getElementById('chosen-cell');
 
@@ -16,6 +16,7 @@ const chosenCell = document.getElementById('chosen-cell');
 const firstGrid = [];  //Filled with the initial grid
 let nextGrid = [];  //Filled with the dynamically changed grid for each iteration
 let newGrid = [];
+const greens = [];
 
 // Variables
 let cols;
@@ -91,9 +92,10 @@ function checkEnteredInfo(col,row, n, index) {
         if (col <= cols) {
             if(n > 0) {            
                 if(firstGrid[index] === 1) {
-                    setMessage("In Gen 0 the chosen cell's color is green", 3000);
+                    setMessage("In Gen 0 the chosen cell's color is green", 2000);
+                    greens.push(1);
                 } else {
-                    setMessage("In Gen 0 the chosen cell's color is red", 3000);
+                    setMessage("In Gen 0 the chosen cell's color is red", 2000);
                 }   
                 changeColor(n,index);
             } else {
@@ -201,21 +203,26 @@ const changeColor = async (iter,index) => {
             cell.setAttribute("data-value", newGrid[i]);
         })
 
+        if(newGrid[index] === 1) {
+            greens.push(1);
+        }
+
         nextGrid = [...newGrid];
     }
 
-    clearChosenCell(iter,index);
+    showResult(iter,index);
 }
 
-function clearChosenCell(iter,index) {
+function showResult(iter,index) {
     cellXCoor.value = '';
     cellYCoor.value = '';
     iterationN.value = '';
+    goBtn.disabled = true;
 
     if(newGrid[index] === 1) {
-        setMessage(`In Gen ${iter} the chosen cell's color is green`, 3000);
+        setMessage(`In Gen ${iter} the chosen cell's color is green, it has been green for ${greens.length} generations`, 5000);
     } else {
-        setMessage(`In Gen ${iter} the chosen cell's color is red`, 3000);
+        setMessage(`In Gen ${iter} the chosen cell's color is red, it has been green for ${greens.length} generations`, 5000);
     }
 }
 
@@ -228,5 +235,5 @@ function restartGame(e) {
 
 // Event Listeners
 mainForm.addEventListener('submit', getGridData);
-iterationSubmit.addEventListener('click', getGenN);
+goBtn.addEventListener('click', getGenN);
 restartGameBtn.addEventListener('click', restartGame);
