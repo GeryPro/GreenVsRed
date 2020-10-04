@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <title>Green Vs Red</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header id="header" class="header-container">
+            <h1>Let's Play!</h1>
+
+            <label for="number">Cell Column:</label>
+            <input type="number" class="game-input" id="cell-x-input">
+            <label for="number">Cell Row:</label>
+            <input type="number" class="game-input" id="cell-y-input">
+            <label for="number">Iterations N:</label>
+            <input type="number" class="game-input" id="iteration-input">
+            <button type="submit" class="game-btn" id="iteration-submit">Go!</button>
+            <button type="submit" class="game-btn" id="restart-game">Restart</button>
+
+        </header>
+        
+        <!-- Insert the text for the chosen cell here -->
+        <p id="chosen-cell"></p>
+
+        <!-- Insert the grid here -->
+        <div id="game-grid" class="game-grid"></div>
+
+
+    <!-- Modal -->
+    <div id="modal">
+        <div class="modal-content">
+        <form id="main-form">
+            <h1>Please choose how many... </h1>
+            <label for="columns">Colums:</label>
+            <input type="number" name="columns" id="columns" class="modal-input" placeholder="Please enter a number between 1 and 999">
+            <label for="row">Rows:</label>
+            <input type="number" name="rows" id="rows" class="modal-input" placeholder="Please enter a number between 1 and 999">
+            <button type="submit" id="submit"class="modal-btn">Create!</button>
+        </form>
+    </div>
+    </div>
+
+</div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
