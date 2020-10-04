@@ -35,8 +35,8 @@ function getGridData(e) {
     modal.classList.add('hidden');
     header.classList.add('show');
 
-    cols = colNum.value;
-    rows = rowNum.value;
+    cols = +(colNum.value.trim());
+    rows = +(rowNum.value.trim());
 
     createCells(rows, cols);
 
